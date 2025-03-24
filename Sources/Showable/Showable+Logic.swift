@@ -1,14 +1,12 @@
 import Foundation
 
-extension Showable {
-    
+public extension Showable {
     // MARK: Showing
     
     /// Whether the item can be shown.
     /// - Parameter willShowImmediately: Default is `false`. If the item can be shown and this '`willShowImmediately = true`, `didShow` is called by this function.
     /// - Returns: Boolean value.
-    public func canShow(willShowImmediately: Bool = false) -> Bool {
-        
+    func canShow(willShowImmediately: Bool = false) -> Bool {
         guard !isShowingBlocked() else { return false }
         
         setFirstShowRequestedIfNeeded()
@@ -30,7 +28,6 @@ extension Showable {
         return true
     }
     
-    
     /// Whether enough time has passed since the last show or first show request.
     /// - Returns: Boolean.
     private func sufficientTimeElapsed() -> Bool {
@@ -42,7 +39,6 @@ extension Showable {
         return Date().timeIntervalSince(lastShownAt) > minimumTimeBetweenShows
     }
     
-    
     /// Whether the next show at date has been passed.
     /// - Returns: Boolean
     private func nextShowAtIsInPast() -> Bool {
@@ -50,56 +46,50 @@ extension Showable {
         return Date().timeIntervalSince(nextShowAt) >= 0
     }
     
-    
     /// Call this when the item has been shown to update the last shown at date.
-    public func didShow() {
+    func didShow() {
         setLastShownAt(Date())
         setNextShowAt(nil)
     }
     
-    
     /// Handles showing the item if it can be shown.
-    public func showIfNeeded(_ sender: Any?) {
+    func showIfNeeded(_ sender: Any?) {
         guard canShow(willShowImmediately: true) else { return }
         show(sender)
     }
-    
     
     // MARK: First Show
     
     /// Sets the first date that the show was requested as now.
     /// - Parameter date: The date.
-    public func setFirstShowRequested() {
+    func setFirstShowRequested() {
         setFirstShownAt(Date())
     }
     
     /// Sets that the first 'can show' was requested.
-    public func setFirstShowRequestedIfNeeded() {
+    func setFirstShowRequestedIfNeeded() {
         guard firstShowRequestedAt() == nil else { return }
         setFirstShowRequested()
     }
     
-    
     // MARK: Block
     
     /// Call this function to block all future shows from happening.
-    public func blockShowing() {
+    func blockShowing() {
         setBlockEnabled(true)
     }
     
     /// Call this function to allow future shows to happen.
-    public func enableShowing() {
+    func enableShowing() {
         setBlockEnabled(false)
     }
-    
     
     // MARK: Reset
     
     /// Deletes the dates that the item was first shown at and last shown at.
-    public func resetShowable() {
+    func resetShowable() {
         setLastShownAt(nil)
         setFirstShownAt(nil)
         setBlockEnabled(false)
     }
-    
 }

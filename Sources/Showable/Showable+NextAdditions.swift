@@ -2,8 +2,6 @@
 import Foundation
 
 public extension Showable {
-    
-    
     /// Sets the date to next show the item at.
     /// - Parameters:
     ///   - component: The date component.
@@ -13,13 +11,11 @@ public extension Showable {
         setNextShowAt(date)
     }
     
-    
     /// Sets the next time to show the item in months.
     /// - Parameter months: Number of months.
     func setNextShowIn(months: Int) {
         setNextShowIn(.month, value: months)
     }
-    
     
     /// Sets the next time to show the item in days.
     /// - Parameter days: Number of days.
@@ -27,13 +23,11 @@ public extension Showable {
         setNextShowIn(.day, value: days)
     }
     
-    
     /// Sets the next time to show the item in days.
     /// - Parameter hours: Number of hours.
     func setNextShowIn(hours: Int) {
         setNextShowIn(.hour, value: hours)
     }
-    
     
     /// Sets the next time to show the item in minutes.
     /// - Parameter minutes: Number of minutes.
@@ -41,17 +35,14 @@ public extension Showable {
         setNextShowIn(.minute, value: minutes)
     }
     
-    
     /// Sets the next time to show the item in seconds.
     /// - Parameter seconds: Number of seconds.
     func setNextShowIn(seconds: Int) {
         setNextShowIn(.second, value: seconds)
     }
     
-    
     /// Sets the item to be shown again in one day.
     func showAgainTomorrow() {
         setNextShowIn(days: 1)
     }
-    
 }

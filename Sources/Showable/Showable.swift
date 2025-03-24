@@ -1,7 +1,6 @@
 import Foundation
 
 public protocol Showable {
-    
     /// The showable type.
     var showableType: ShowableType { get }
     
@@ -45,6 +44,4 @@ public protocol Showable {
     /// Prevents or enables future shows.
     /// - Parameter block: Boolean.
     func setBlockEnabled(_ block: Bool)
-    
 }
-
