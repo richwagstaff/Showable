@@ -63,11 +63,12 @@ public extension UDShowable {
     
     /// Sets the first show requested at the given date.
     /// - Parameter date: The date.
-    func setFirstShownAt(_ date: Date?) {
+    func setFirstShowRequestedAt(_ date: Date?) {
         UserDefaults.standard.set(date, forKey: firstShowRequestedAtKey)
         UserDefaults.standard.synchronize()
     }
-    
+
+
     /// Whether showing is blocked.
     func isShowingBlocked() -> Bool {
         alwaysBlockShowing() || UserDefaults.standard.bool(forKey: blockedKey)

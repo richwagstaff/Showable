@@ -36,11 +36,12 @@ public protocol Showable {
     /// Set the date that the item was last shown at.
     /// - Parameter date: The date.
     func setLastShownAt(_ date: Date?)
-    
-    /// Sets the first show requested at the given date.
-    /// - Parameter date: The date.
-    func setFirstShownAt(_ date: Date?)
-    
+
+    /// Sets the date to next show the item at.
+    /// - Parameters:
+    ///  - date: The date component.
+    func setFirstShowRequestedAt(_ date: Date?)
+
     /// Prevents or enables future shows.
     /// - Parameter block: Boolean.
     func setBlockEnabled(_ block: Bool)

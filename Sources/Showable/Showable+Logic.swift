@@ -1,8 +1,6 @@
 import Foundation
 
 public extension Showable {
-    // MARK: Showing
-    
     /// Whether the item can be shown.
     /// - Parameter willShowImmediately: Default is `false`. If the item can be shown and this '`willShowImmediately = true`, `didShow` is called by this function.
     /// - Returns: Boolean value.
@@ -24,7 +22,7 @@ public extension Showable {
         if willShowImmediately {
             didShow()
         }
-        
+
         return true
     }
     
@@ -57,13 +55,11 @@ public extension Showable {
         guard canShow(willShowImmediately: true) else { return }
         show(sender)
     }
-    
-    // MARK: First Show
-    
+
     /// Sets the first date that the show was requested as now.
     /// - Parameter date: The date.
     func setFirstShowRequested() {
-        setFirstShownAt(Date())
+        setFirstShowRequestedAt(Date())
     }
     
     /// Sets that the first 'can show' was requested.
@@ -89,7 +85,7 @@ public extension Showable {
     /// Deletes the dates that the item was first shown at and last shown at.
     func resetShowable() {
         setLastShownAt(nil)
-        setFirstShownAt(nil)
+        setFirstShowRequestedAt(nil)
         setBlockEnabled(false)
     }
 }
